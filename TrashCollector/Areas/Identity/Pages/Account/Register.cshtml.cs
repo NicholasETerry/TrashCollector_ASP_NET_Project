@@ -97,7 +97,7 @@ namespace TrashCollector.Areas.Identity.Pages.Account
                     
                     await _signInManager.SignInAsync(user, isPersistent: false);
                     
-                    //conditionals to redirect to Customer Create or Employees Create
+                    //conditionals to redirect to Customers Create or Employees Create
                     
                 }
                 foreach (var error in result.Errors)
