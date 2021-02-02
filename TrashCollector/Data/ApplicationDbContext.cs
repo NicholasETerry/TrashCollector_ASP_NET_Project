@@ -23,7 +23,7 @@ namespace TrashCollector.Data
                 Name = "Admin",
                 NormalizedName = "ADMIN"
             });
-            builder.Entity<IdentityRole>().HasData(new IdentityRole
+            builder.Entity<IdentityRole>().HasData(new IdentityRole  // THIS DOES NOT WORK !!!!!!!
             {
                 Name = "Customer",
                 NormalizedName = "CUSTOMER"
