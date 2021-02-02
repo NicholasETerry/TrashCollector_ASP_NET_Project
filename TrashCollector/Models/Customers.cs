@@ -1,4 +1,5 @@
-﻿using System;
+﻿using Microsoft.AspNetCore.Identity;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -7,7 +8,7 @@ using System.Threading.Tasks;
 
 namespace TrashCollector.Models
 {
-    public class Customer
+    public class Customers
     {
         [Key]
         public int Id { get; set; }
@@ -35,5 +36,9 @@ namespace TrashCollector.Models
         public DateTime ScheduledPickUp { get; set; }
         [Display(Name = "Special Disposal Pickup")]
         public DateTime SpecialPickUp { get; set; }
+
+        [ForeignKey("IdentityUser")]
+        public string IdentityUserId { get; set; }
+        public IdentityUser IdentityUser { get; set; }
     }
 }

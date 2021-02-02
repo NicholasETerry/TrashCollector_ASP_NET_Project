@@ -7,7 +7,7 @@ using System.Threading.Tasks;
 
 namespace TrashCollector.Models
 {
-    public class Employee
+    public class Employees
     {
         [Key]
         public int Id { get; set; }

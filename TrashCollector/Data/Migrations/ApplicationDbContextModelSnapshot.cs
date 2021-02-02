@@ -48,8 +48,8 @@ namespace TrashCollector.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "025735a6-8693-4a45-85ed-aef11a7e8362",
-                            ConcurrencyStamp = "f77cf4e3-635e-4849-a3f0-9ff03512e87d",
+                            Id = "e48efe60-bbbc-4799-88be-609fab8954a5",
+                            ConcurrencyStamp = "35eea2c6-0a83-4999-9ad2-17c55f910a77",
                             Name = "Admin",
                             NormalizedName = "ADMIN"
                         });
@@ -242,7 +242,7 @@ namespace TrashCollector.Data.Migrations
                     b.ToTable("CalenderTable");
                 });
 
-            modelBuilder.Entity("TrashCollector.Models.Customer", b =>
+            modelBuilder.Entity("TrashCollector.Models.Customers", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -284,7 +284,7 @@ namespace TrashCollector.Data.Migrations
                     b.ToTable("CustomersTable");
                 });
 
-            modelBuilder.Entity("TrashCollector.Models.Employee", b =>
+            modelBuilder.Entity("TrashCollector.Models.Employees", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()

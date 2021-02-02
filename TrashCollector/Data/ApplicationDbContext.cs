@@ -24,8 +24,8 @@ namespace TrashCollector.Data
                 NormalizedName = "ADMIN"
             });
         }
-        public DbSet<Customer> CustomersTable { get; set; }
-        public DbSet<Employee> EmployeesTable { get; set; }
+        public DbSet<Customers> CustomersTable { get; set; }
+        public DbSet<Employees> EmployeesTable { get; set; }
         public DbSet<Calendar> CalenderTable { get; set; }
         public DbSet<Payment> PaymentTable { get; set; }
 
