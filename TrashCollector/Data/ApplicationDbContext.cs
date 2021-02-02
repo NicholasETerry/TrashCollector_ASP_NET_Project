@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Text;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
 using TrashCollector.Models;
@@ -13,9 +14,20 @@ namespace TrashCollector.Data
             : base(options)
         {
         }
+        protected override void OnModelCreating(ModelBuilder builder)
+        {
+            base.OnModelCreating(builder);
 
-        public DbSet<Users> UsersTable { get; set; }
+            builder.Entity<IdentityRole>().HasData(new IdentityRole
+            {
+                Name = "Admin",
+                NormalizedName = "ADMIN"
+            });
+        }
+        public DbSet<Customer> CustomersTable { get; set; }
+        public DbSet<Employee> EmployeesTable { get; set; }
         public DbSet<Calendar> CalenderTable { get; set; }
+        public DbSet<Payment> PaymentTable { get; set; }
 
     }
 }
