@@ -18,12 +18,7 @@ namespace TrashCollector.Data
         {
             base.OnModelCreating(builder);
 
-            builder.Entity<IdentityRole>().HasData(new IdentityRole
-            {
-                Name = "Admin",
-                NormalizedName = "ADMIN"
-            });
-            builder.Entity<IdentityRole>().HasData(new IdentityRole  // THIS DOES NOT WORK !!!!!!!
+            builder.Entity<IdentityRole>().HasData(new IdentityRole  
             {
                 Name = "Customer",
                 NormalizedName = "CUSTOMER"
