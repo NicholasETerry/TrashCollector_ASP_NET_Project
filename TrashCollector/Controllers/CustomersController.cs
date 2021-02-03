@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using System.Security.Claims;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
@@ -11,7 +12,7 @@ using TrashCollector.Models;
 
 namespace TrashCollector.Controllers
 {
-    [Authorize(Roles = "Customer")]
+
     public class CustomersController : Controller
     {
         private readonly ApplicationDbContext _context;
@@ -24,8 +25,14 @@ namespace TrashCollector.Controllers
         // GET: Customers
         public async Task<IActionResult> Index()
         {
-            var applicationDbContext = _context.CustomersTable.Include(c => c.IdentityUser);
-            return View(await applicationDbContext.ToListAsync());
+            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+            var customer = _context.CustomersTable.Where(c => c.IdentityUserId == userId).SingleOrDefault();
+            if (customer == null)
+            {
+                return RedirectToAction("Create");
+            }
+            return View(await _context.CustomersTable.ToListAsync());
+            
         }
 
         // GET: Customers/Details/5
@@ -61,8 +68,12 @@ namespace TrashCollector.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,Address,ZipCode,EmailAddress,PaymentId,AmountOwed,CalendarId,ScheduledPickUp,SpecialPickUp,IdentityUserId")] Customers customers)
         {
-            if (ModelState.IsValid)
+            
+            if (ModelState.IsValid )
+
             {
+                var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                customers.IdentityUserId = userId;
                 _context.Add(customers);
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));

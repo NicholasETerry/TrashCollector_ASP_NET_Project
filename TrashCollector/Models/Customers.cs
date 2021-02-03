@@ -36,6 +36,8 @@ namespace TrashCollector.Models
         public DateTime ScheduledPickUp { get; set; }
         [Display(Name = "Special Disposal Pickup")]
         public DateTime SpecialPickUp { get; set; }
+        public DateTime TempSuspendStart { get; set; }
+        public DateTime TempSuspendEnd { get; set; }
 
         [ForeignKey("IdentityUser")]
         public string IdentityUserId { get; set; }
