@@ -201,3 +201,4 @@ C:\Users\Nicholas\Desktop\DevCode\Thulium\TrashCollector\TrashCollector\obj\Debu
 C:\Users\Nicholas\Desktop\DevCode\Thulium\TrashCollector\TrashCollector\obj\Debug\netcoreapp3.1\Razor\Views\Employees\Details.cshtml.g.cs
 C:\Users\Nicholas\Desktop\DevCode\Thulium\TrashCollector\TrashCollector\obj\Debug\netcoreapp3.1\Razor\Views\Employees\Edit.cshtml.g.cs
 C:\Users\Nicholas\Desktop\DevCode\Thulium\TrashCollector\TrashCollector\obj\Debug\netcoreapp3.1\Razor\Views\Employees\Index.cshtml.g.cs
+C:\Users\Nicholas\Desktop\DevCode\Thulium\TrashCollector\TrashCollector\obj\Debug\netcoreapp3.1\Razor\Views\Shared\_LayoutCustomers.cshtml.g.cs
