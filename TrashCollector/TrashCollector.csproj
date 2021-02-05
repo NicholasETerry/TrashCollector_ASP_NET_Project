@@ -18,4 +18,16 @@
     <PackageReference Include="Microsoft.VisualStudio.Web.CodeGeneration.Design" Version="3.1.4" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\images\" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Include="wwwroot\images\calendar.png" />
+    <None Include="wwwroot\images\garbage-truck-549997.webp" />
+    <None Include="wwwroot\images\money.jpg" />
+    <None Include="wwwroot\images\pause.png" />
+    <None Include="wwwroot\images\specialCalendar.png" />
+  </ItemGroup>
+
 </Project>

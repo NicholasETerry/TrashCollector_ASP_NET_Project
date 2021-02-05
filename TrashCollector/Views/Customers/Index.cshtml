@@ -4,94 +4,168 @@
     ViewData["Title"] = "Index";
     Layout = "~/Views/Shared/_LayoutCustomers.cshtml";
 }
+<!DOCTYPE html>
 
-<h1>Customer Index</h1>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="~/css/site.css" />
+    <link rel="stylesheet" href="~/css/StyleSheet.css" />
+</head>
+<body>
+    <div class="container">
+        <div class="row">
+            <div class="col-sm">
+                <div class="card" style="width: 18rem;">
+                    <img src="img_avatar.png" alt="Avatar" style="width:100%">
+                    <div class="container">
+                        <h4><b>John Doe</b></h4>
+                        <p>Architect & Engineer</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="card" style="width: 18rem;">
+                    <img src="~/images/money.jpg" alt="Avatar" style="width:100%">
+                    <div class="container">
+                        <h4><b>Balance</b></h4>
+                        <p>Balance Due</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="card" style="width: 18rem;">
+                    <img src="~/images/calendar.png" alt="Avatar" style="width:100%">
+                    <div class="container">
+                        <h4><b>Scheduled pickup</b></h4>
+                        <p>your regular pickup</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="card" style="width: 18rem;">
+                    <img src="~/images/specialCalendar.png" alt="Avatar" style="width:100%">
+                    <div class="container">
+                        <h4><b>One time special pickup</b></h4>
+                        <p>special pickup</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="card" style="width: 18rem;">
+                    <img src="~/images/pause.png" alt="Avatar" style="width:100%">
+                    <div class="container">
+                        <h4><b>Temp service stop</b></h4>
+                        <p>service stop</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-sm">
+                <div class="card" style="width: 18rem;">
+                    <img src="~/images/garbage-truck-549997.webp" alt="Avatar" style="width:100%">
+                    <div class="container">
+                        <h4><b>John Doe</b></h4>
+                        <p>Architect & Engineer</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <script src="~/lib/jquery/dist/jquery.min.js"></script>
+    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+    <script src="~/js/site.js" asp-append-version="true"></script>
+    <script src="~/js/LayoutCustomers.js"></script>
 
-<p>
-    <a asp-action="Create">Create New</a>
-</p>
-<table class="table">
-    <thead>
-        <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.FirstName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.LastName)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.Address)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ZipCode)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.EmailAddress)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.PaymentId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AmountOwed)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.CalendarId)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ScheduledPickUp)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SpecialPickUp)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdentityUser)
-            </th>
-            <th></th>
-        </tr>
-    </thead>
-    <tbody>
-        @foreach (var item in Model)
-        {
+</body>
+</html>
+
+
+
+@*<p>
+        <a asp-action="Create">Create New</a>
+    </p>
+    <table class="table">
+        <thead>
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.FirstName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.LastName)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Address)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ZipCode)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.EmailAddress)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.PaymentId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AmountOwed)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.CalendarId)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.ScheduledPickUp)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SpecialPickUp)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.IdentityUser.Id)
-                </td>
-                <td>
-                    <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
-                    <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
-                    <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
-                </td>
+                <th>
+                    @Html.DisplayNameFor(model => model.FirstName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.LastName)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.Address)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ZipCode)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.EmailAddress)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.PaymentId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.AmountOwed)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.CalendarId)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.ScheduledPickUp)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.SpecialPickUp)
+                </th>
+                <th>
+                    @Html.DisplayNameFor(model => model.IdentityUser)
+                </th>
+                <th></th>
             </tr>
-        }
-    </tbody>
-</table>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.FirstName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.LastName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.Address)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ZipCode)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.EmailAddress)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.PaymentId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.AmountOwed)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.CalendarId)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.ScheduledPickUp)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.SpecialPickUp)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => item.IdentityUser.Id)
+                    </td>
+                    <td>
+                        <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
+                        <a asp-action="Details" asp-route-id="@item.Id">Details</a> |
+                        <a asp-action="Delete" asp-route-id="@item.Id">Delete</a>
+                    </td>
+                </tr>
+            }
+        </tbody>
+    </table>*@
