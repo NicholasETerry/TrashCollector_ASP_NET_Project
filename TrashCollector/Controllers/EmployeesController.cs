@@ -25,13 +25,15 @@ namespace TrashCollector.Controllers
         // GET: Employees
         public async Task<IActionResult> Index()
         {
+            DateTime current = DateTime.Now;
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            var customer = _context.EmployeesTable.Where(c => c.IdentityUserId == userId).SingleOrDefault();
-            if (customer == null)
+            var employee = _context.EmployeesTable.Where(e => e.IdentityUserId == userId).SingleOrDefault();
+            var customer = _context.CustomersTable.Where(c => c.ScheduledPickUp.ToString("dddd") == current.ToString("dddd")).ToListAsync();
+            if (employee == null)
             {
                 return RedirectToAction("Create");
             }
-            return View(await _context.EmployeesTable.ToListAsync());
+            return View(await customer);
         }
 
         // GET: Employees/Details/5

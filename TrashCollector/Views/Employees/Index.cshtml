@@ -1,4 +1,4 @@
-﻿@model IEnumerable<TrashCollector.Models.Employees>
+﻿@model IEnumerable<TrashCollector.Models.Customers>
 
 @{
     ViewData["Title"] = "Index";
@@ -23,13 +23,13 @@
                 @Html.DisplayNameFor(model => model.ZipCode)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.ConfirmPickUp)
+                @Html.DisplayNameFor(model => model.AmountOwed)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CustomerId)
+                @Html.DisplayNameFor(model => model.SpecialPickUp)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.CalendarId)
+                @Html.DisplayNameFor(model => model.ScheduledPickUp)
             </th>
             <th></th>
         </tr>
@@ -38,22 +38,22 @@
 @foreach (var item in Model) {
         <tr>
             <td>
-                @Html.DisplayFor(modelItem => item.FirstName)
+                @Html.DisplayFor(model => item.FirstName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.LastName)
+                @Html.DisplayFor(model => item.LastName)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ZipCode)
+                @Html.DisplayFor(model => item.ZipCode)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.ConfirmPickUp)
+                @Html.DisplayFor(model => item.AmountOwed)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CustomerId)
+                @Html.DisplayFor(model => item.SpecialPickUp)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.CalendarId)
+                @Html.DisplayFor(model => item.ScheduledPickUp)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |
