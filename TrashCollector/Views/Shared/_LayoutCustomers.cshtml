@@ -1,4 +1,5 @@
-﻿<!DOCTYPE html>
+﻿
+<!DOCTYPE html>
 
 <html lang="en">
 <head>
@@ -22,12 +23,12 @@
         @*<div class="nav-item">*@
             <a class="nav-link @*text-dark*@"style="color:lightgreen" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
         @*</div>*@
-        <a asp-action="Balance">Balance</a>
-        <a asp-action="Pickups">Scheduled Pickups</a>
-        <a asp-action="Special">Pickup Request</a>
-        <a asp-action="Service">Start/Stop Service</a>
-        <a asp-action="Edit">Update Personal Information</a>
-        <a asp-action="Edit">Update Personal Information</a>
+        <a asp-area="" asp-controller="Customers" asp-action="Balance" >Balance</a>
+        <a asp-area="" asp-controller="Customers" asp-action="Pickups" >Scheduled Pickups</a>
+        @*<a href="/Customers/Edit/5">Edit</a>*@
+        <a asp-area="" asp-controller="Customers" asp-action="Index"   >Index</a>
+        <a asp-area="" asp-controller="Customers" asp-action="Create" >Create</a>
+        <a asp-area="" asp-controller="Customers" asp-action="Details" >Details</a>
         @*<div class="nav-item">*@
             <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                 <button type="submit" class="nav-link btn btn-link @*text-dark*@"style="color:lightgreen" title="Log Out">Logout</button>

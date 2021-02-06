@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Security.Claims;
 using System.Threading.Tasks;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
@@ -11,25 +12,27 @@ using TrashCollector.Models;
 
 namespace TrashCollector.Controllers
 {
-    public class CustomersController : Controller
+
+    public class CustomerController : Controller
     {
         private readonly ApplicationDbContext _context;
 
-        public CustomersController(ApplicationDbContext context)
+        public CustomerController(ApplicationDbContext context)
         {
             _context = context;
         }
 
         // GET: Customers
-        public async Task<IActionResult> Index(Customers customer)
+        public async Task<IActionResult> Index()
         {
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            customer.IdentityUserId = userId;
+            var customer = _context.CustomersTable.Where(c => c.IdentityUserId == userId).SingleOrDefault();
             if (customer == null)
             {
                 return RedirectToAction("Create");
             }
-            return View(await _context.CustomersTable.Where(c => c.IdentityUserId == userId).ToListAsync());
+            return View(await _context.CustomersTable.ToListAsync());
+            
         }
 
         // GET: Customers/Details/5
@@ -54,6 +57,8 @@ namespace TrashCollector.Controllers
         // GET: Customers/Create
         public IActionResult Create()
         {
+            var calender = _context.CalenderTable.ToList();
+            var payment = _context.PaymentTable.ToList();
             ViewData["IdentityUserId"] = new SelectList(_context.Users, "Id", "Id");
             return View();
         }
@@ -63,9 +68,10 @@ namespace TrashCollector.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,Address,City,ZipCode,EmailAddress,PaymentId,AmountOwed,CalendarId,ScheduledPickUp,SpecialPickUp,TempSuspendStart,TempSuspendEnd,IdentityUserId")] Customers customers)
+        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,Address,ZipCode,EmailAddress,PaymentId,AmountOwed,CalendarId,ScheduledPickUp,SpecialPickUp,IdentityUserId")] Customers customers)
         {
-            if (ModelState.IsValid)
+            
+            if (ModelState.IsValid )
 
             {
                 var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
@@ -77,7 +83,6 @@ namespace TrashCollector.Controllers
             ViewData["IdentityUserId"] = new SelectList(_context.Users, "Id", "Id", customers.IdentityUserId);
             return View(customers);
         }
-    
 
         // GET: Customers/Edit/5
         public async Task<IActionResult> Edit(int? id)
@@ -101,7 +106,7 @@ namespace TrashCollector.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,Address,City,ZipCode,EmailAddress,PaymentId,AmountOwed,CalendarId,ScheduledPickUp,SpecialPickUp,TempSuspendStart,TempSuspendEnd,IdentityUserId")] Customers customers)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,Address,ZipCode,EmailAddress,PaymentId,AmountOwed,CalendarId,ScheduledPickUp,SpecialPickUp,IdentityUserId")] Customers customers)
         {
             if (id != customers.Id)
             {
@@ -166,5 +171,15 @@ namespace TrashCollector.Controllers
         {
             return _context.CustomersTable.Any(e => e.Id == id);
         }
+        public async Task<IActionResult> Balance()
+        {
+            {
+
+                var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+                var customer = _context.CustomersTable.Where(c => c.IdentityUserId == userId).SingleOrDefault();
+                return View(customer);
+            }
+        }
+
     }
 }
