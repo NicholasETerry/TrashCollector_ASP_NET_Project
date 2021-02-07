@@ -28,15 +28,14 @@ namespace TrashCollector.Models
         [Display(Name ="Amount Owed")]
         public double AmountOwed { get; set; }
 
-        [Display(Name = "Disposal Pickup Day")]
+        [Display(Name = "Special Pickup Day")]
         public DateTime SpecialPickUp { get; set; }
         [Display(Name = "Start Suspension Of Service")]
         public DateTime TempSuspendStart { get; set; }
         [Display(Name = "End Suspension Of Service")]
         public DateTime TempSuspendEnd { get; set; }
         [Display(Name = "Pickup Day")]
-        [NotMapped]
-        public SelectListItem PickupDay { get; set; }
+        public string PickupDay { get; set; }
 
         [ForeignKey("IdentityUser")]
         public string IdentityUserId { get; set; }

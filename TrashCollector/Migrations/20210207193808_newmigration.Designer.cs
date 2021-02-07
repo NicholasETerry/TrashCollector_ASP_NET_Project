@@ -10,8 +10,8 @@ using TrashCollector.Data;
 namespace TrashCollector.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210207190821_newdatabase")]
-    partial class newdatabase
+    [Migration("20210207193808_newmigration")]
+    partial class newmigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,15 +50,15 @@ namespace TrashCollector.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "b0b27418-2fd4-4be4-b264-7571fe186047",
-                            ConcurrencyStamp = "374c96c9-d607-4f60-a58a-da439d33bfd3",
+                            Id = "311ef3d5-abeb-498d-9895-c831c1ef4aac",
+                            ConcurrencyStamp = "0562d5b6-976d-4c9f-9730-7dd4c2b476ad",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         },
                         new
                         {
-                            Id = "18805750-6b2c-45da-b81c-aeaba7343dcc",
-                            ConcurrencyStamp = "9d621f89-df2d-4935-8393-b1d3c2f38c40",
+                            Id = "ed1ffecf-1692-4dbc-85b2-bf559b9251e4",
+                            ConcurrencyStamp = "0a58b6f3-a8d4-4a51-9b7a-e2251788d5d6",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         });
@@ -261,6 +261,9 @@ namespace TrashCollector.Migrations
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("PickupDay")
+                        .HasColumnType("nvarchar(max)");
+
                     b.Property<DateTime>("SpecialPickUp")
                         .HasColumnType("datetime2");
 
@@ -278,6 +281,18 @@ namespace TrashCollector.Migrations
                     b.HasIndex("IdentityUserId");
 
                     b.ToTable("CustomersTable");
+                });
+
+            modelBuilder.Entity("TrashCollector.Models.Days", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DaysTable");
                 });
 
             modelBuilder.Entity("TrashCollector.Models.Employees", b =>

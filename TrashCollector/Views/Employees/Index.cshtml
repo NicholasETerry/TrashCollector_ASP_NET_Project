@@ -22,12 +22,6 @@
             <th>
                 @Html.DisplayNameFor(model => model.ZipCode)
             </th>
-            <th>
-                @Html.DisplayNameFor(model => model.AmountOwed)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.SpecialPickUp)
-            </th>
             <th></th>
         </tr>
     </thead>
@@ -42,12 +36,6 @@
             </td>
             <td>
                 @Html.DisplayFor(model => item.ZipCode)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.AmountOwed)
-            </td>
-            <td>
-                @Html.DisplayFor(model => item.SpecialPickUp)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

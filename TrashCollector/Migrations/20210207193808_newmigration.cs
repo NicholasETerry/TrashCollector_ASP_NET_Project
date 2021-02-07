@@ -3,7 +3,7 @@ using Microsoft.EntityFrameworkCore.Migrations;
 
 namespace TrashCollector.Migrations
 {
-    public partial class newdatabase : Migration
+    public partial class newmigration : Migration
     {
         protected override void Up(MigrationBuilder migrationBuilder)
         {
@@ -44,6 +44,18 @@ namespace TrashCollector.Migrations
                 constraints: table =>
                 {
                     table.PrimaryKey("PK_AspNetUsers", x => x.Id);
+                });
+
+            migrationBuilder.CreateTable(
+                name: "DaysTable",
+                columns: table => new
+                {
+                    Id = table.Column<int>(nullable: false)
+                        .Annotation("SqlServer:Identity", "1, 1")
+                },
+                constraints: table =>
+                {
+                    table.PrimaryKey("PK_DaysTable", x => x.Id);
                 });
 
             migrationBuilder.CreateTable(
@@ -168,6 +180,7 @@ namespace TrashCollector.Migrations
                     SpecialPickUp = table.Column<DateTime>(nullable: false),
                     TempSuspendStart = table.Column<DateTime>(nullable: false),
                     TempSuspendEnd = table.Column<DateTime>(nullable: false),
+                    PickupDay = table.Column<string>(nullable: true),
                     IdentityUserId = table.Column<string>(nullable: true)
                 },
                 constraints: table =>
@@ -209,12 +222,12 @@ namespace TrashCollector.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "b0b27418-2fd4-4be4-b264-7571fe186047", "374c96c9-d607-4f60-a58a-da439d33bfd3", "Customer", "CUSTOMER" });
+                values: new object[] { "311ef3d5-abeb-498d-9895-c831c1ef4aac", "0562d5b6-976d-4c9f-9730-7dd4c2b476ad", "Customer", "CUSTOMER" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "18805750-6b2c-45da-b81c-aeaba7343dcc", "9d621f89-df2d-4935-8393-b1d3c2f38c40", "Employee", "EMPLOYEE" });
+                values: new object[] { "ed1ffecf-1692-4dbc-85b2-bf559b9251e4", "0a58b6f3-a8d4-4a51-9b7a-e2251788d5d6", "Employee", "EMPLOYEE" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",
@@ -285,6 +298,9 @@ namespace TrashCollector.Migrations
 
             migrationBuilder.DropTable(
                 name: "CustomersTable");
+
+            migrationBuilder.DropTable(
+                name: "DaysTable");
 
             migrationBuilder.DropTable(
                 name: "EmployeesTable");

@@ -100,6 +100,7 @@ namespace TrashCollector.Controllers
         // GET: Customers/Edit/5
         public async Task<IActionResult> Edit(int? id)
         {
+            ViewBag.Days = pickupDayList();
             if (id == null)
             {
                 return NotFound();
