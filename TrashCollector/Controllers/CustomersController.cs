@@ -23,13 +23,14 @@ namespace TrashCollector.Controllers
         // GET: Customers
         public async Task<IActionResult> Index(Customers customer)
         {
+            
             var userId =  this.User.FindFirstValue(ClaimTypes.NameIdentifier);
              customer =  _context.CustomersTable.Where(c => c.IdentityUserId == userId).SingleOrDefault();
             if (customer == null)
             {
                 return RedirectToAction("Create");
             }
-            return View(await _context.CustomersTable.ToListAsync());
+            return View(await _context.CustomersTable.Where(c => c.IdentityUserId == userId).ToListAsync());
         }
 
         // GET: Customers/Details/5
@@ -55,6 +56,7 @@ namespace TrashCollector.Controllers
         public IActionResult Create()
         {
             ViewData["IdentityUserId"] = new SelectList(_context.Users, "Id", "Id");
+            ViewBag.Days = pickupDayList();
             return View();
         }
 
@@ -65,7 +67,6 @@ namespace TrashCollector.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,Address,City,ZipCode,EmailAddress,PaymentId,AmountOwed,CalendarId,ScheduledPickUp,SpecialPickUp,TempSuspendStart,TempSuspendEnd,IdentityUserId")] Customers customers)
         {
-            ViewBag.Days = pickupDayList();
             if (ModelState.IsValid)
 
             {
@@ -84,10 +85,10 @@ namespace TrashCollector.Controllers
             string now = dateTime.ToString("dddd");
             List<SelectListItem> daysOfTheWeek = new List<SelectListItem>();
             SelectListItem Monday = new SelectListItem() { Text = "Monday", Value = "0", Selected = true };
-            SelectListItem Tuesday = new SelectListItem() { Text = "Tuesday", Value = "1", Selected = true };
-            SelectListItem Wednesday = new SelectListItem() { Text = "Wednesday", Value = "2", Selected = true };
-            SelectListItem Thurday = new SelectListItem() { Text = "Thursday", Value = "3", Selected = true };
-            SelectListItem Friday = new SelectListItem() { Text = "Friday", Value = "4", Selected = true };
+            SelectListItem Tuesday = new SelectListItem() { Text = "Tuesday", Value = "1", Selected = false };
+            SelectListItem Wednesday = new SelectListItem() { Text = "Wednesday", Value = "2", Selected = false };
+            SelectListItem Thurday = new SelectListItem() { Text = "Thursday", Value = "3", Selected = false };
+            SelectListItem Friday = new SelectListItem() { Text = "Friday", Value = "4", Selected = false };
             daysOfTheWeek.Add(Monday);
             daysOfTheWeek.Add(Tuesday);
             daysOfTheWeek.Add(Wednesday);

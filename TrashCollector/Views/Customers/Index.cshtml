@@ -29,13 +29,10 @@
                 @Html.DisplayNameFor(model => model.ZipCode)
             </th>
             <th>
-                @Html.DisplayNameFor(model => model.EmailAddress)
+                @Html.DisplayNameFor(model => model.PickupDay)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.AmountOwed)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.ScheduledPickUp)
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.SpecialPickUp)
@@ -45,9 +42,6 @@
             </th>
             <th>
                 @Html.DisplayNameFor(model => model.TempSuspendEnd)
-            </th>
-            <th>
-                @Html.DisplayNameFor(model => model.IdentityUser)
             </th>
             <th></th>
         </tr>
@@ -71,13 +65,10 @@
                 @Html.DisplayFor(modelItem => item.ZipCode)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.EmailAddress)
+                @Html.DisplayFor(modelItem => item.PickupDay)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.AmountOwed)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.ScheduledPickUp)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.SpecialPickUp)
@@ -87,9 +78,6 @@
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.TempSuspendEnd)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.IdentityUser.Id)
             </td>
             <td>
                 <a asp-action="Edit" asp-route-id="@item.Id">Edit</a> |

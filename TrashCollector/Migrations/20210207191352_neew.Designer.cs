@@ -10,8 +10,8 @@ using TrashCollector.Data;
 namespace TrashCollector.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210207165648_newdatabase")]
-    partial class newdatabase
+    [Migration("20210207191352_neew")]
+    partial class neew
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,15 +50,15 @@ namespace TrashCollector.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "af411dcc-fb0e-4694-b85b-444a6dd22f55",
-                            ConcurrencyStamp = "a72faab8-e70a-4cbe-932b-6e454ba7c309",
+                            Id = "ef5a81e0-cd77-4493-bf3e-9d188ee9d48d",
+                            ConcurrencyStamp = "dffc239c-6586-42a5-85b0-b4cc67bc3a46",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         },
                         new
                         {
-                            Id = "c7fd2984-03e8-4a36-89f8-b605b1634267",
-                            ConcurrencyStamp = "68128e82-77dc-487e-b039-7b11faf7e8d8",
+                            Id = "abf7aa96-2c10-4c81-b0df-26b3671f70e4",
+                            ConcurrencyStamp = "5a950f1a-1273-4efa-8c0f-0c299a8e3df5",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         });
@@ -278,6 +278,18 @@ namespace TrashCollector.Migrations
                     b.HasIndex("IdentityUserId");
 
                     b.ToTable("CustomersTable");
+                });
+
+            modelBuilder.Entity("TrashCollector.Models.Days", b =>
+                {
+                    b.Property<int>("Id")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int")
+                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.HasKey("Id");
+
+                    b.ToTable("DaysTable");
                 });
 
             modelBuilder.Entity("TrashCollector.Models.Employees", b =>
