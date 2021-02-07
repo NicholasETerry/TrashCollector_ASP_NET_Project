@@ -165,7 +165,6 @@ namespace TrashCollector.Migrations
                     ZipCode = table.Column<int>(nullable: false),
                     EmailAddress = table.Column<string>(nullable: true),
                     AmountOwed = table.Column<double>(nullable: false),
-                    ScheduledPickUp = table.Column<string>(nullable: true),
                     SpecialPickUp = table.Column<DateTime>(nullable: false),
                     TempSuspendStart = table.Column<DateTime>(nullable: false),
                     TempSuspendEnd = table.Column<DateTime>(nullable: false),
@@ -210,12 +209,12 @@ namespace TrashCollector.Migrations
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "2a40eb98-fc06-4746-b248-3cb10f9dc7f7", "b09c7398-e653-4eea-8652-80572f8b1979", "Customer", "CUSTOMER" });
+                values: new object[] { "af411dcc-fb0e-4694-b85b-444a6dd22f55", "a72faab8-e70a-4cbe-932b-6e454ba7c309", "Customer", "CUSTOMER" });
 
             migrationBuilder.InsertData(
                 table: "AspNetRoles",
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
-                values: new object[] { "61b8ad1e-3af3-43b7-80cc-db40c6610bb6", "a57e36c8-c4a7-4755-98d4-4aa6e22d6b6f", "Employee", "EMPLOYEE" });
+                values: new object[] { "c7fd2984-03e8-4a36-89f8-b605b1634267", "68128e82-77dc-487e-b039-7b11faf7e8d8", "Employee", "EMPLOYEE" });
 
             migrationBuilder.CreateIndex(
                 name: "IX_AspNetRoleClaims_RoleId",

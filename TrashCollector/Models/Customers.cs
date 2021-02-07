@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Mvc.Rendering;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -28,7 +29,8 @@ namespace TrashCollector.Models
         public double AmountOwed { get; set; }
 
         [Display(Name = "Disposal Pickup Day")]
-        public string ScheduledPickUp { get; set; }
+        [NotMapped]
+        public SelectListItem ScheduledPickUp { get; set; }
         [Display(Name = "Special Disposal Pickup")]
         public DateTime SpecialPickUp { get; set; }
         [Display(Name = "Start Suspension Of Service")]

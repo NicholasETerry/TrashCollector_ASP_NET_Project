@@ -65,6 +65,7 @@ namespace TrashCollector.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,Address,City,ZipCode,EmailAddress,PaymentId,AmountOwed,CalendarId,ScheduledPickUp,SpecialPickUp,TempSuspendStart,TempSuspendEnd,IdentityUserId")] Customers customers)
         {
+            ViewBag.Days = pickupDayList();
             if (ModelState.IsValid)
 
             {
@@ -77,7 +78,23 @@ namespace TrashCollector.Controllers
             ViewData["IdentityUserId"] = new SelectList(_context.Users, "Id", "Id", customers.IdentityUserId);
             return View(customers);
         }
-    
+        public List<SelectListItem> pickupDayList()
+        {
+            DateTime dateTime = DateTime.Now;
+            string now = dateTime.ToString("dddd");
+            List<SelectListItem> daysOfTheWeek = new List<SelectListItem>();
+            SelectListItem Monday = new SelectListItem() { Text = "Monday", Value = "0", Selected = true };
+            SelectListItem Tuesday = new SelectListItem() { Text = "Tuesday", Value = "1", Selected = true };
+            SelectListItem Wednesday = new SelectListItem() { Text = "Wednesday", Value = "2", Selected = true };
+            SelectListItem Thurday = new SelectListItem() { Text = "Thursday", Value = "3", Selected = true };
+            SelectListItem Friday = new SelectListItem() { Text = "Friday", Value = "4", Selected = true };
+            daysOfTheWeek.Add(Monday);
+            daysOfTheWeek.Add(Tuesday);
+            daysOfTheWeek.Add(Wednesday);
+            daysOfTheWeek.Add(Thurday);
+            daysOfTheWeek.Add(Friday);
+            return daysOfTheWeek;
+        }
 
         // GET: Customers/Edit/5
         public async Task<IActionResult> Edit(int? id)

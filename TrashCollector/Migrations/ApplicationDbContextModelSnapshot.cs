@@ -48,15 +48,15 @@ namespace TrashCollector.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "2a40eb98-fc06-4746-b248-3cb10f9dc7f7",
-                            ConcurrencyStamp = "b09c7398-e653-4eea-8652-80572f8b1979",
+                            Id = "af411dcc-fb0e-4694-b85b-444a6dd22f55",
+                            ConcurrencyStamp = "a72faab8-e70a-4cbe-932b-6e454ba7c309",
                             Name = "Customer",
                             NormalizedName = "CUSTOMER"
                         },
                         new
                         {
-                            Id = "61b8ad1e-3af3-43b7-80cc-db40c6610bb6",
-                            ConcurrencyStamp = "a57e36c8-c4a7-4755-98d4-4aa6e22d6b6f",
+                            Id = "c7fd2984-03e8-4a36-89f8-b605b1634267",
+                            ConcurrencyStamp = "68128e82-77dc-487e-b039-7b11faf7e8d8",
                             Name = "Employee",
                             NormalizedName = "EMPLOYEE"
                         });
@@ -257,9 +257,6 @@ namespace TrashCollector.Migrations
                         .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LastName")
-                        .HasColumnType("nvarchar(max)");
-
-                    b.Property<string>("ScheduledPickUp")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("SpecialPickUp")
