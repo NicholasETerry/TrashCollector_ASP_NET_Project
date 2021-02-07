@@ -36,6 +36,8 @@ namespace TrashCollector.Models
         public DateTime TempSuspendEnd { get; set; }
         [Display(Name = "Pickup Day")]
         public string PickupDay { get; set; }
+        [Display(Name = "Confirm Pickup")]
+        public bool ConfirmPickUp { get; set; }
 
         [ForeignKey("IdentityUser")]
         public string IdentityUserId { get; set; }
