@@ -24,20 +24,16 @@ namespace TrashCollector.Models
         [Display(Name = "Email Address")]
         public string EmailAddress { get; set; }
 
-        [ForeignKey("Payment")]
-        [Display(Name = "Account Number")]
-        public int PaymentId { get; set; }
         [Display(Name ="Amount Owed")]
         public double AmountOwed { get; set; }
 
-        [ForeignKey("Calendar")]
-        [Display(Name = "Calendar Year")]
-        public int CalendarId { get; set; }
         [Display(Name = "Disposal Pickup Day")]
-        public DateTime ScheduledPickUp { get; set; }
+        public string ScheduledPickUp { get; set; }
         [Display(Name = "Special Disposal Pickup")]
         public DateTime SpecialPickUp { get; set; }
+        [Display(Name = "Start Suspension Of Service")]
         public DateTime TempSuspendStart { get; set; }
+        [Display(Name = "End Suspension Of Service")]
         public DateTime TempSuspendEnd { get; set; }
 
         [ForeignKey("IdentityUser")]

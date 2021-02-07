@@ -7,11 +7,11 @@ using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 using TrashCollector.Data;
 
-namespace TrashCollector.Data.Migrations
+namespace TrashCollector.Migrations
 {
     [DbContext(typeof(ApplicationDbContext))]
-    [Migration("20210202182035_setsAddedForDataBase")]
-    partial class setsAddedForDataBase
+    [Migration("20210207143502_newdatabase")]
+    partial class newdatabase
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -50,10 +50,17 @@ namespace TrashCollector.Data.Migrations
                     b.HasData(
                         new
                         {
-                            Id = "b8f1bb51-7b96-4aaa-8762-fcccfbaf96f0",
-                            ConcurrencyStamp = "9c58269e-abc4-4fc1-8e0d-b32198d5c314",
-                            Name = "Admin",
-                            NormalizedName = "ADMIN"
+                            Id = "2a40eb98-fc06-4746-b248-3cb10f9dc7f7",
+                            ConcurrencyStamp = "b09c7398-e653-4eea-8652-80572f8b1979",
+                            Name = "Customer",
+                            NormalizedName = "CUSTOMER"
+                        },
+                        new
+                        {
+                            Id = "61b8ad1e-3af3-43b7-80cc-db40c6610bb6",
+                            ConcurrencyStamp = "a57e36c8-c4a7-4755-98d4-4aa6e22d6b6f",
+                            Name = "Employee",
+                            NormalizedName = "EMPLOYEE"
                         });
                 });
 
@@ -226,25 +233,7 @@ namespace TrashCollector.Data.Migrations
                     b.ToTable("AspNetUserTokens");
                 });
 
-            modelBuilder.Entity("TrashCollector.Models.Calendar", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<DateTime>("ScheduledPickUp")
-                        .HasColumnType("datetime2");
-
-                    b.Property<DateTime>("SpecialPickUp")
-                        .HasColumnType("datetime2");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("CalenderTable");
-                });
-
-            modelBuilder.Entity("TrashCollector.Models.Customer", b =>
+            modelBuilder.Entity("TrashCollector.Models.Customers", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -257,8 +246,8 @@ namespace TrashCollector.Data.Migrations
                     b.Property<double>("AmountOwed")
                         .HasColumnType("float");
 
-                    b.Property<int>("CalendarId")
-                        .HasColumnType("int");
+                    b.Property<string>("City")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<string>("EmailAddress")
                         .HasColumnType("nvarchar(max)");
@@ -266,16 +255,22 @@ namespace TrashCollector.Data.Migrations
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
 
+                    b.Property<string>("IdentityUserId")
+                        .HasColumnType("nvarchar(450)");
+
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("PaymentId")
-                        .HasColumnType("int");
-
-                    b.Property<DateTime>("ScheduledPickUp")
-                        .HasColumnType("datetime2");
+                    b.Property<string>("ScheduledPickUp")
+                        .HasColumnType("nvarchar(max)");
 
                     b.Property<DateTime>("SpecialPickUp")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("TempSuspendEnd")
+                        .HasColumnType("datetime2");
+
+                    b.Property<DateTime>("TempSuspendStart")
                         .HasColumnType("datetime2");
 
                     b.Property<int>("ZipCode")
@@ -283,46 +278,44 @@ namespace TrashCollector.Data.Migrations
 
                     b.HasKey("Id");
 
+                    b.HasIndex("IdentityUserId");
+
                     b.ToTable("CustomersTable");
                 });
 
-            modelBuilder.Entity("TrashCollector.Models.Employee", b =>
+            modelBuilder.Entity("TrashCollector.Models.Employees", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
                         .HasColumnType("int")
                         .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
+
+                    b.Property<int>("CalendarId")
+                        .HasColumnType("int");
 
                     b.Property<bool>("ConfirmPickUp")
                         .HasColumnType("bit");
 
+                    b.Property<int>("CustomerId")
+                        .HasColumnType("int");
+
                     b.Property<string>("FirstName")
                         .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("IdentityUserId")
+                        .HasColumnType("nvarchar(450)");
 
                     b.Property<string>("LastName")
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<string>("ZipCode")
-                        .HasColumnType("nvarchar(max)");
+                    b.Property<int>("ZipCode")
+                        .HasColumnType("int");
 
                     b.HasKey("Id");
+
+                    b.HasIndex("IdentityUserId");
 
                     b.ToTable("EmployeesTable");
-                });
-
-            modelBuilder.Entity("TrashCollector.Models.Payment", b =>
-                {
-                    b.Property<int>("Id")
-                        .ValueGeneratedOnAdd()
-                        .HasColumnType("int")
-                        .HasAnnotation("SqlServer:ValueGenerationStrategy", SqlServerValueGenerationStrategy.IdentityColumn);
-
-                    b.Property<double>("AmountOwed")
-                        .HasColumnType("float");
-
-                    b.HasKey("Id");
-
-                    b.ToTable("PaymentTable");
                 });
 
             modelBuilder.Entity("Microsoft.AspNetCore.Identity.IdentityRoleClaim<string>", b =>
@@ -374,6 +367,20 @@ namespace TrashCollector.Data.Migrations
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
+                });
+
+            modelBuilder.Entity("TrashCollector.Models.Customers", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
+                        .WithMany()
+                        .HasForeignKey("IdentityUserId");
+                });
+
+            modelBuilder.Entity("TrashCollector.Models.Employees", b =>
+                {
+                    b.HasOne("Microsoft.AspNetCore.Identity.IdentityUser", "IdentityUser")
+                        .WithMany()
+                        .HasForeignKey("IdentityUserId");
                 });
 #pragma warning restore 612, 618
         }

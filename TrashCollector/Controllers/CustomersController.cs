@@ -23,13 +23,13 @@ namespace TrashCollector.Controllers
         // GET: Customers
         public async Task<IActionResult> Index(Customers customer)
         {
-            var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
-            customer.IdentityUserId = userId;
+            var userId =  this.User.FindFirstValue(ClaimTypes.NameIdentifier);
+             customer =  _context.CustomersTable.Where(c => c.IdentityUserId == userId).SingleOrDefault();
             if (customer == null)
             {
                 return RedirectToAction("Create");
             }
-            return View(await _context.CustomersTable.Where(c => c.IdentityUserId == userId).ToListAsync());
+            return View(await _context.CustomersTable.ToListAsync());
         }
 
         // GET: Customers/Details/5

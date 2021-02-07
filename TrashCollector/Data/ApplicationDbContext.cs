@@ -31,8 +31,6 @@ namespace TrashCollector.Data
         }
         public DbSet<Customers> CustomersTable { get; set; }
         public DbSet<Employees> EmployeesTable { get; set; }
-        public DbSet<Calendar> CalenderTable { get; set; }
-        public DbSet<Payment> PaymentTable { get; set; }
 
     }
 }
