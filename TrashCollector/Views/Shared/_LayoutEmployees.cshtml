@@ -1,50 +1,52 @@
 ﻿
 <!DOCTYPE html>
 
-<html lang="en">
-<head>
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <title>@ViewBag.Title</title>
-    <title>Sidebar 07</title>
-    <meta charset="utf-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
-    <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-Minty.css" />
-    @*<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
-        <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">*@
-    <link rel="stylesheet" href="~/css/site.css" />
-    <link rel="stylesheet" href="~/css/StyleSheet.css" />
-</head>
-<body>
+    <html lang="en">
+    <head>
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <title>@ViewBag.Title</title>
+        <title>Sidebar 07</title>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+        <link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap-Minty.css" />
+        @*<link href="https://fonts.googleapis.com/css?family=Poppins:300,400,500,600,700,800,900" rel="stylesheet">
+            <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">*@
+        <link rel="stylesheet" href="~/css/site.css" />
+        <link rel="stylesheet" href="~/css/StyleSheet.css" />
+    </head>
+    <body>
 
-    <div id="mySidebar" class="sidebar">
-        <a href="javascript:void(0)" class="closebtn" style="color:lightgreen" onclick="closeNav()">&times;</a>
-        @*<span class="material-icons md-48" style="color:lightgreen;text-shadow:2px 2px 4px #000000;">payments</span>*@
-        @*<div class="nav-item">*@
-        <a class="nav-link @*text-dark*@" style="color:lightgreen" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
-        @*</div>*@
-        <a asp-area="" asp-controller="Customers" asp-action="Balance">Balance</a>
-        <a asp-area="" asp-controller="Customers" asp-action="Pickups">Scheduled Pickups</a>
-        <a asp-area="" asp-controller="Customers" asp-action="Index">Index</a>
-        <a asp-area="" asp-controller="Customers" asp-action="Create">Create</a>
-        <a asp-area="" asp-controller="Customers" asp-action="Details">Details</a>
-        @*<div class="nav-item">*@
-        <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
-            <button type="submit" class="nav-link btn btn-link @*text-dark*@" style="color:lightgreen" title="Log Out">Logout</button>
-        </form>
-        @*</div>*@
-    </div>
+        <div id="mySidebar" class="sidebar">
+            <a href="javascript:void(0)" class="closebtn" style="color:lightgreen" onclick="closeNav()">&times;</a>
+            @*<span class="material-icons md-48" style="color:lightgreen;text-shadow:2px 2px 4px #000000;">payments</span>*@
+            @*<div class="nav-item">*@
+            <a class="nav-link @*text-dark*@" style="color:lightgreen" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @ViewData["EmployeeFirstName"]!</a>
+            @*</div>*@
+            @Html.BeginForm("HandelButtonClick", "Employees"){ 
+            <button type="submit" class="nav-link btn btn-link" style="color:lightgreen" title="Monday"name="Monday" value="0">Monday</button>
+            <button type="submit" class="nav-link btn btn-link" style="color:lightgreen" title="Tuesday"name="Tuesday" value="1">Tuesday</button>
+            <button type="submit" class="nav-link btn btn-link" style="color:lightgreen" title="Wednesday"name="Wednesday" value="2">Wednesday</button>
+            <button type="submit" class="nav-link btn btn-link" style="color:lightgreen" title="Thursday"name="Thursday" value="3">Thursday</button>
+            <button type="submit" class="nav-link btn btn-link" style="color:lightgreen" title="Friday"name="Friday" value="4">Friday</button>
+            }
+            @*<div class="nav-item">*@
+            <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
+                <button type="submit" class="nav-link btn btn-link @*text-dark*@" style="color:lightgreen" title="Log Out">Logout</button>
+            </form>
+            @*</div>*@
+        </div>
 
-    <div id="main">
-        <button class="openbtn" style="color:lightgreen" onclick="openNav()">&#9776;</button>
-        <main role="main" class="pb-3">
-            @RenderBody()
-        </main>
-    </div>
-    <script src="~/lib/jquery/dist/jquery.min.js"></script>
-    <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
-    <script src="~/js/site.js" asp-append-version="true"></script>
-    <script src="~/js/LayoutCustomers.js"></script>
-    @RenderSection("Scripts", required: false)
-</body>
+        <div id="main">
+            <button class="openbtn" style="color:lightgreen" onclick="openNav()">&#9776;</button>
+            <main role="main" class="pb-3">
+                @RenderBody()
+            </main>
+        </div>
+        <script src="~/lib/jquery/dist/jquery.min.js"></script>
+        <script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+        <script src="~/js/site.js" asp-append-version="true"></script>
+        <script src="~/js/LayoutCustomers.js"></script>
+        @RenderSection("Scripts", required: false)
+    </body>
 </html>

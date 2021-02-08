@@ -21,7 +21,7 @@
         <a href="javascript:void(0)" class="closebtn" style="color:lightgreen" onclick="closeNav()">&times;</a>
         @*<span class="material-icons md-48" style="color:lightgreen;text-shadow:2px 2px 4px #000000;">payments</span>*@
         @*<div class="nav-item">*@
-            <a class="nav-link @*text-dark*@"style="color:lightgreen" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @User.Identity.Name!</a>
+            <a class="nav-link @*text-dark*@"style="color:lightgreen" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @ViewData["CustomerFirstName"]!</a>
         @*</div>*@
         <a asp-area="" asp-controller="Customers" asp-action="Balance" >Balance</a>
         <a asp-area="" asp-controller="Customers" asp-action="Pickups" >Scheduled Pickups</a>

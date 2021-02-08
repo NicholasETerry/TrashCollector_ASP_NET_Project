@@ -28,8 +28,6 @@ namespace TrashCollector.Data
                 Name = "Employee",
                 NormalizedName = "EMPLOYEE"
             });
-            //builder.Ignore<Days>();
-            builder.Entity<Customers>().HasKey(c => c.Id);
         }
         public DbSet<Customers> CustomersTable { get; set; }
         public DbSet<Employees> EmployeesTable { get; set; }

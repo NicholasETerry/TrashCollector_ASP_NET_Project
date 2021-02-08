@@ -23,7 +23,6 @@ namespace TrashCollector.Controllers
         // GET: Customers
         public async Task<IActionResult> Index(Customers customer)
         {
-            
             var userId =  this.User.FindFirstValue(ClaimTypes.NameIdentifier);
              customer =  _context.CustomersTable.Where(c => c.IdentityUserId == userId).SingleOrDefault();
             if (customer == null)
@@ -56,7 +55,7 @@ namespace TrashCollector.Controllers
         public IActionResult Create()
         {
             ViewData["IdentityUserId"] = new SelectList(_context.Users, "Id", "Id");
-            ViewBag.Days = pickupDayList();
+            //ViewBag.Days = pickupDayList();
             return View();
         }
 
@@ -65,7 +64,7 @@ namespace TrashCollector.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,Address,City,ZipCode,EmailAddress,PaymentId,AmountOwed,CalendarId,ScheduledPickUp,SpecialPickUp,TempSuspendStart,TempSuspendEnd,IdentityUserId")] Customers customers)
+        public async Task<IActionResult> Create([Bind("Id,FirstName,LastName,Address,City,ZipCode,PickupDate,EmailAddress,PaymentId,AmountOwed,SpecialPickUp,TempSuspendStart,TempSuspendEnd,IdentityUserId")] Customers customers)
         {
             if (ModelState.IsValid)
 
@@ -76,6 +75,7 @@ namespace TrashCollector.Controllers
                 await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
+            ViewData["CustomerFirstName"] = customers.FirstName;
             ViewData["IdentityUserId"] = new SelectList(_context.Users, "Id", "Id", customers.IdentityUserId);
             return View(customers);
         }
@@ -120,7 +120,7 @@ namespace TrashCollector.Controllers
         // more details, see http://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,Address,City,ZipCode,EmailAddress,PaymentId,AmountOwed,CalendarId,ScheduledPickUp,SpecialPickUp,TempSuspendStart,TempSuspendEnd,IdentityUserId")] Customers customers)
+        public async Task<IActionResult> Edit(int id, [Bind("Id,FirstName,LastName,Address,City,ZipCode,PickupDate,EmailAddress,PaymentId,AmountOwed,SpecialPickUp,TempSuspendStart,TempSuspendEnd,IdentityUserId")] Customers customers)
         {
             if (id != customers.Id)
             {

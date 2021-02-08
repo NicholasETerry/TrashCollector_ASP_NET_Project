@@ -27,6 +27,8 @@ namespace TrashCollector.Models
 
         [Display(Name ="Amount Owed")]
         public double AmountOwed { get; set; }
+        [Display(Name = "Pickup Day")]
+        public string PickupDate { get; set; }
 
         [Display(Name = "Special Pickup Day")]
         public DateTime SpecialPickUp { get; set; }
@@ -34,8 +36,6 @@ namespace TrashCollector.Models
         public DateTime TempSuspendStart { get; set; }
         [Display(Name = "End Suspension Of Service")]
         public DateTime TempSuspendEnd { get; set; }
-        [Display(Name = "Pickup Day")]
-        public string PickupDay { get; set; }
         [Display(Name = "Confirm Pickup")]
         public bool ConfirmPickUp { get; set; }
 

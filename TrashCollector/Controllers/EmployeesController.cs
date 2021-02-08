@@ -26,15 +26,25 @@ namespace TrashCollector.Controllers
         // GET: Employees
         public async Task<IActionResult> Index()
         {
+            
             var userId = this.User.FindFirstValue(ClaimTypes.NameIdentifier);
             var employee = _context.EmployeesTable.Where(e => e.IdentityUserId == userId).SingleOrDefault();
             if (employee == null)
             {
                 return RedirectToAction("Create");
             }
+            ViewData["EmployeeFirstName"] = employee.FirstName;
             var customer = _context.CustomersTable.Where(c => c.ZipCode == employee.ZipCode
             ).ToListAsync();
             return View(await customer);
+        }
+        public async Task<IActionResult> HandleButtonClick(string day)
+        {
+            if(day == "Monday")
+            {
+                return RedirectToAction(nameof(Index));
+            }
+            return View();
         }
 
         // GET: Employees/Details/5
@@ -45,14 +55,22 @@ namespace TrashCollector.Controllers
                 return NotFound();
             }
 
-            var employees = await _context.EmployeesTable
+            var customers = await _context.CustomersTable
                 .FirstOrDefaultAsync(m => m.Id == id);
-            if (employees == null)
+            if (customers == null)
             {
                 return NotFound();
             }
 
-            return View(employees);
+            return View(customers);
+        }
+        public async Task<IActionResult> PickupMade(int id)
+        {
+            var customer = _context.CustomersTable.Where(c => c.Id == id).SingleOrDefault();
+            customer.AmountOwed += 4.50;
+            customer.ConfirmPickUp = true;
+            await _context.SaveChangesAsync();
+            return RedirectToAction("Index");
         }
 
         // GET: Employees/Create

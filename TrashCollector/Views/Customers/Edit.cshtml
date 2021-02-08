@@ -40,14 +40,14 @@
                 <span asp-validation-for="ZipCode" class="text-danger"></span>
             </div>
             <div class="form-group">
+                <label asp-for="PickupDate" class="control-label"></label>
+                <input asp-for="PickupDate" class="form-control" />
+                <span asp-validation-for="PickupDate" class="text-danger"></span>
+            </div>
+            <div class="form-group">
                 <label asp-for="EmailAddress" class="control-label"></label>
                 <input asp-for="EmailAddress" class="form-control" />
                 <span asp-validation-for="EmailAddress" class="text-danger"></span>
-            </div>
-            <div class="form-group">
-                <label asp-for="PickupDay" class="control-label"></label>
-                @Html.DropDownList("Days")
-                <span asp-validation-for="PickupDay" class="text-danger"></span>
             </div>
             <div class="form-group">
                 <label asp-for="SpecialPickUp" class="control-label"></label>
