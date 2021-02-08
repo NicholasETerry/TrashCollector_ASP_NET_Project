@@ -29,6 +29,7 @@ namespace TrashCollector.Controllers
             {
                 return RedirectToAction("Create");
             }
+            ViewData["CustomerFirstName"] = customer.FirstName;
             return View(await _context.CustomersTable.Where(c => c.IdentityUserId == userId).ToListAsync());
         }
 

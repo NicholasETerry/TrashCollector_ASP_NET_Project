@@ -23,13 +23,13 @@
             @*<div class="nav-item">*@
             <a class="nav-link @*text-dark*@" style="color:lightgreen" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @ViewData["EmployeeFirstName"]!</a>
             @*</div>*@
-            @Html.BeginForm("HandelButtonClick", "Employees"){ 
-            <button type="submit" class="nav-link btn btn-link" style="color:lightgreen" title="Monday"name="Monday" value="0">Monday</button>
-            <button type="submit" class="nav-link btn btn-link" style="color:lightgreen" title="Tuesday"name="Tuesday" value="1">Tuesday</button>
-            <button type="submit" class="nav-link btn btn-link" style="color:lightgreen" title="Wednesday"name="Wednesday" value="2">Wednesday</button>
-            <button type="submit" class="nav-link btn btn-link" style="color:lightgreen" title="Thursday"name="Thursday" value="3">Thursday</button>
-            <button type="submit" class="nav-link btn btn-link" style="color:lightgreen" title="Friday"name="Friday" value="4">Friday</button>
-            }
+            @*@Html.BeginForm("HandelButtonClick", "Employees"){*@ 
+            <button type="submit" class="nav-link btn btn-link" style="color:lightslategrey" title="Monday"name="Monday" value="0">Monday</button>
+            <button type="submit" class="nav-link btn btn-link" style="color:lightslategrey" title="Tuesday"name="Tuesday" value="1">Tuesday</button>
+            <button type="submit" class="nav-link btn btn-link" style="color:lightslategrey" title="Wednesday"name="Wednesday" value="2">Wednesday</button>
+            <button type="submit" class="nav-link btn btn-link" style="color:lightslategrey" title="Thursday"name="Thursday" value="3">Thursday</button>
+            <button type="submit" class="nav-link btn btn-link" style="color:lightslategrey" title="Friday"name="Friday" value="4">Friday</button>
+            @*}*@
             @*<div class="nav-item">*@
             <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                 <button type="submit" class="nav-link btn btn-link @*text-dark*@" style="color:lightgreen" title="Log Out">Logout</button>
