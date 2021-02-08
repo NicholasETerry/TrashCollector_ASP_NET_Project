@@ -21,6 +21,7 @@ namespace TrashCollector.Controllers
         public EmployeesController(ApplicationDbContext context)
         {
             _context = context;
+
         }
 
         // GET: Employees
