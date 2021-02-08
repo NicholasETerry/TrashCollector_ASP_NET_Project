@@ -20,10 +20,7 @@
         <a href="javascript:void(0)" class="closebtn" style="color:lightgreen" onclick="closeNav()">&times;</a>
             <a class="nav-link @*text-dark*@"style="color:lightgreen" asp-area="Identity" asp-page="/Account/Manage/Index" title="Manage">Hello @ViewData["CustomerFirstName"]!</a>
         @*</div>*@
-        <a asp-area="" asp-controller="Customers" asp-action="Balance" >Balance</a>
-        <a asp-area="" asp-controller="Customers" asp-action="Pickups" >Scheduled Pickups</a>
-        <a asp-area="" asp-controller="Customers" asp-action="Index"   >Index</a>
-        <a asp-area="" asp-controller="Customers" asp-action="Create" >Create</a>
+        <a asp-area="" asp-controller="Customers" asp-action="Index"   >Make Payment</a>
         @*<div class="nav-item">*@
             <form class="form-inline" asp-area="Identity" asp-page="/Account/Logout" asp-route-returnUrl="@Url.Action("Index", "Home", new { area = "" })">
                 <button type="submit" class="nav-link btn btn-link @*text-dark*@"style="color:lightgreen" title="Log Out">Logout</button>
